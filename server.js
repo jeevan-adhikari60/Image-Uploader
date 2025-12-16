@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import multer from "multer";
 import path from "path";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
 
 import { v2 as cloudinary } from "cloudinary";
@@ -15,9 +18,9 @@ cloudinary.config({
 
 mongoose
   .connect(
-    "mongodb+srv://codesnippet02:nq0sdJL2Jc3QqZba@cluster0.zmf40.mongodb.net/",
+    process.env.MONGO_URL,
     {
-      dbName: "NodeJs_Mastery_Course",
+      dbName: "image_uploader",
     }
   )
   .then(() => console.log("MongoDb Connected..!"))
